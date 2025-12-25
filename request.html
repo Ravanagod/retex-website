@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Textile Pickup Request</title>
+
+<style>
+body{
+  font-family:Segoe UI;
+  background:#F7FAF8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+form{
+  width:420px;
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+h2{text-align:center;margin-bottom:20px}
+input,select,button{
+  width:100%;
+  padding:10px;
+  margin-bottom:15px;
+}
+button{
+  background:#2E7D32;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-size:15px;
+}
+</style>
+</head>
+
+<body>
+
+<form id="pickupForm">
+  <h2>Request Textile Pickup</h2>
+
+  <input id="name" placeholder="Your Name" required>
+  <input id="location" placeholder="Location" required>
+
+  <select id="fabric">
+    <option value="Cotton">Cotton</option>
+    <option value="Polyester">Polyester</option>
+    <option value="Mixed">Mixed</option>
+  </select>
+
+  <input id="quantity" type="number" placeholder="Quantity (kg)" required>
+
+  <button type="submit">Submit Request</button>
+</form>
+
+<script>
+document.getElementById("pickupForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  /* READ EXISTING REQUESTS */
+  let requests = JSON.parse(localStorage.getItem("requests")) || [];
+
+  /* CREATE NEW REQUEST OBJECT */
+  const newRequest = {
+    name: document.getElementById("name").value,
+    location: document.getElementById("location").value,
+    fabric: document.getElementById("fabric").value,
+    quantity: Number(document.getElementById("quantity").value),
+    status: "Pending",
+    timestamp: new Date().toLocaleString()
+  };
+
+  /* PUSH & SAVE */
+  requests.push(newRequest);
+  localStorage.setItem("requests", JSON.stringify(requests));
+
+  alert("Pickup request saved successfully!");
+  this.reset();
+});
+</script>
+
+</body>
+</html>

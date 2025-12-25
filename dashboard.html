@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard | ReTex</title>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Admin Dashboard</h1>
+  <div>
+    <span id="adminName"></span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<section class="kpis">
+  <div class="card"><h3 id="total">0</h3><p>Total Requests</p></div>
+  <div class="card"><h3 id="kg">0 kg</h3><p>Total Quantity</p></div>
+  <div class="card"><h3 id="cotton">0</h3><p>Cotton Requests</p></div>
+  <div class="card green">System Active</div>
+</section>
+
+<section class="table-section">
+  <h2>Pickup Requests</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Fabric</th>
+        <th>Qty</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="table"></tbody>
+  </table>
+</section>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
