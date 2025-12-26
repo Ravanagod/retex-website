@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ReTex | Textile Waste Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --green:#2E7D32;
+  --dark:#263238;
+  --bg:#F7FAF8;
+  --card:#FFFFFF;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI", system-ui;
+  background:var(--bg);
+  color:var(--dark);
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+nav h2{margin:0;color:var(--green)}
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:var(--dark);
+}
+nav .admin-btn{
+  background:var(--green);
+  color:white;
+  padding:8px 16px;
+  border-radius:6px;
+}
+
+/* HERO */
+header{
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+header h1{margin:0;font-size:42px}
+header p{margin-top:10px;font-size:18px}
+
+/* SECTIONS */
+section{padding:70px 20px}
+.section-title{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+  max-width:1000px;
+  margin:auto;
+}
+.card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+/* FORM */
+.form-card{
+  max-width:520px;
+  margin:auto;
+  background:var(--card);
+  padding:35px;
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.1);
+}
+input,select,textarea,button{
+  width:100%;
+  padding:12px;
+  margin-bottom:16px;
+}
+textarea{resize:none;height:90px}
+button{
+  background:var(--green);
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  background:#1B5E20;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h2>ReTex</h2>
+  <div>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#pickup">Pickup</a>
+    <a href="#contact">Contact</a>
+    <a href="login.html" class="admin-btn">Admin Portal</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header>
+  <h1>ReTex</h1>
+  <p>Convert Textile Waste into Sustainable Paper</p>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About ReTex</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Waste Reduction</h3>
+      <p>We collect textile waste and prevent landfill accumulation.</p>
+    </div>
+    <div class="card">
+      <h3>Sustainable Paper</h3>
+      <p>Textile fibers are recycled into eco-friendly paper.</p>
+    </div>
+    <div class="card">
+      <h3>Digital Management</h3>
+      <p>Pickup requests are digitally tracked and managed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <h2 class="section-title">Our Process</h2>
+  <div class="grid">
+    <div class="card">1. Collection</div>
+    <div class="card">2. Sorting</div>
+    <div class="card">3. Pulping</div>
+    <div class="card">4. Paper Production</div>
+  </div>
+</section>
+
+<!-- PICKUP -->
+<section id="pickup">
+  <h2 class="section-title">Request Textile Pickup</h2>
+
+  <form class="form-card" id="pickupForm">
+    <input id="name" placeholder="Your Name" required>
+    <input id="location" placeholder="City / Area" required>
+    <textarea id="address" placeholder="Complete Pickup Address" required></textarea>
+
+    <select id="fabric">
+      <option value="Cotton">Cotton</option>
+      <option value="Polyester">Polyester</option>
+      <option value="Mixed">Mixed</option>
+    </select>
+
+    <input id="quantity" type="number" min="1"
+           placeholder="Quantity (kg) — minimum 1 kg" required>
+
+    <button type="submit">Submit Pickup Request</button>
+  </form>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <p style="text-align:center;font-size:16px">
+    📧 Email: <strong>support@retex.com</strong><br><br>
+    📞 Phone: <strong>9059838320</strong>
+  </p>
+</section>
+
+<footer>
+  © 2025 ReTex | Sustainable Textile Solutions
+</footer>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("-kQ0QKEvUVzonLgj0");
+})();
+</script>
+
+<script>
+document.getElementById("pickupForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const nameValue = document.getElementById("name").value.trim();
+  const locationValue = document.getElementById("location").value.trim();
+  const addressValue = document.getElementById("address").value.trim();
+  const fabricValue = document.getElementById("fabric").value;
+  const quantityValue = Number(document.getElementById("quantity").value);
+
+  if(quantityValue < 1){
+    alert("Minimum pickup quantity must be at least 1 kg.");
+    return;
+  }
+
+  const requestData = {
+    name: nameValue,
+    location: locationValue,
+    address: addressValue,
+    fabric: fabricValue,
+    quantity: quantityValue,
+    status: "Pending",
+    timestamp: new Date().toLocaleString()
+  };
+
+  let requests = JSON.parse(localStorage.getItem("requests")) || [];
+  requests.push(requestData);
+  localStorage.setItem("requests", JSON.stringify(requests));
+
+  emailjs.send(
+    "service_70ecn45",
+    "template_s5ygpef",
+    {
+      name: requestData.name,
+      location: requestData.location,
+      address: requestData.address,
+      fabric: requestData.fabric,
+      quantity: requestData.quantity,
+      time: requestData.timestamp,
+      email: "harrysrilucky@gmail.com"
+    }
+  ).then(
+    () => alert("Pickup request submitted successfully! Admin notified."),
+    () => alert("Request saved, but email sending failed.")
+  );
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>

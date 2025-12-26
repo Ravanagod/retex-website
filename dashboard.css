@@ -1,0 +1,73 @@
+body{
+  margin:0;
+  font-family:Segoe UI, system-ui;
+  background:#F7FAF8;
+  color:#263238;
+}
+
+/* HEADER */
+header{
+  background:white;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+header h1{
+  margin:0;
+}
+button{
+  padding:8px 16px;
+  background:#B71C1C;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* KPIs */
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:20px;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+.card.green{
+  background:#2E7D32;
+  color:white;
+}
+
+/* TABLE */
+.table-section{
+  padding:20px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+}
+th, td{
+  padding:12px;
+  border-bottom:1px solid #ddd;
+  vertical-align:top;
+}
+th{
+  background:#E8F5E9;
+}
+td{
+  max-width:240px;
+  word-wrap:break-word;
+}
+select{
+  padding:6px;
+}
